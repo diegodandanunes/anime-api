@@ -3,7 +3,7 @@ import { fetchAnimeData } from '../services/animeService';
 
 export const getAnimeData = async (req: Request, res: Response) => {
   try {
-    const animeId = req.params.id;
+    const animeId = req.params.id; 
     const data = await fetchAnimeData(animeId);
     res.status(200).json(data);
   } catch (error) {
