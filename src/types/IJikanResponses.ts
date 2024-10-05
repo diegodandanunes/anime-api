@@ -64,3 +64,30 @@ export interface IAnimeResponse {
     external: Array<{ name: string; url: string }>;
     streaming: Array<{ name: string; url: string }>;
 }
+
+interface ICharacter {
+    mal_id: number;
+    url: string;
+    images: {
+        jpg: {
+            image_url: string;
+        };
+        webp: {
+            image_url: string;
+            small_image_url: string;
+        };
+    };
+    name: string;
+}
+
+interface IVoiceActor {
+    person: ICharacter;
+    language: string;
+}
+
+export interface ICharacterResponse{
+    character: ICharacter;
+    role: string;
+    favorites: number;
+    voice_actors: IVoiceActor[];
+}
