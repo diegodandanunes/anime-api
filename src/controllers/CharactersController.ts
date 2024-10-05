@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { fetchCharactersByAnime } from '../services/animeService';
+import { fetchCharactersByAnime } from '../services/CharacterService';
 
 export const getCharactersByAnime = async (req: Request, res: Response) => {
   try {

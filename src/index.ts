@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';import dotenv from 'dotenv';
-import animeRoutes from './routes/routes';
 import { errorHandler } from './middlewares/errorHandler';
+import animeRouter from './routes/AnimeRouter';
+import characterRouter from './routes/CharacterRouter';
 
 dotenv.config();
 
@@ -12,7 +13,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
-app.use('/api/anime', animeRoutes);
+app.use('/anime', animeRouter);
+app.use('/characters', characterRouter);
+
 app.use(errorHandler);
 
 app.listen(PORT, () => {
