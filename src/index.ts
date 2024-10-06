@@ -3,6 +3,7 @@ import { errorHandler } from './middlewares/errorHandler';
 import AnimeRouter from './routes/AnimeRouter';
 import CharacterRouter from './routes/CharacterRouter';
 import UserRouter from './routes/UserRouter';
+import cors from 'cors';
 
 const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET } = process.env;
 
@@ -16,6 +17,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
+app.use(cors());
 
 app.use('/anime', AnimeRouter);
 app.use('/characters', CharacterRouter);
