@@ -1,7 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';import dotenv from 'dotenv';
 import { errorHandler } from './middlewares/errorHandler';
-import animeRouter from './routes/AnimeRouter';
-import characterRouter from './routes/CharacterRouter';
+import AnimeRouter from './routes/AnimeRouter';
+import CharacterRouter from './routes/CharacterRouter';
+import UserRouter from './routes/UserRouter';
+
+const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET } = process.env;
 
 dotenv.config();
 
@@ -13,8 +16,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
-app.use('/anime', animeRouter);
-app.use('/characters', characterRouter);
+
+app.use('/anime', AnimeRouter);
+app.use('/characters', CharacterRouter);
+app.use('/', UserRouter)
 
 app.use(errorHandler);
 
