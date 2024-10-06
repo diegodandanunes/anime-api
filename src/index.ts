@@ -5,8 +5,6 @@ import CharacterRouter from './routes/CharacterRouter';
 import UserRouter from './routes/UserRouter';
 import cors from 'cors';
 
-const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET } = process.env;
-
 dotenv.config();
 
 const app = express();
