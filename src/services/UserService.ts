@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import dotenv from "dotenv";
 import { handleAxiosError } from "../utils/handleAxiosError";
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET } = process.env;
 
