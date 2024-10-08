@@ -71,7 +71,6 @@ export const createUser = async (email: string, password: string) => {
     const response = await axios(options);
     return response.data;
   } catch (error) {
-    console.log('aaa', error)
     throw handleAxiosError(error);
   }
 };
