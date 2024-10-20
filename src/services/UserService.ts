@@ -15,7 +15,7 @@ export const fetchUserLogin = async (
 ): Promise<any> => {
   try {
     const payload = {
-      grant_type: 'client_credentials',
+      grant_type: 'password',
       username: email,
       password: password,
       audience: `${AUTH0_DOMAIN}/api/v2/`,
