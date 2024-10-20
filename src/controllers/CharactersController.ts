@@ -14,8 +14,8 @@ export const getCharactersByAnime = async (req: Request, res: Response) => {
         imagePath: char.character.images.jpg.image_url,
         name: char.character.name,
         role: char.role,
-      })
-    })
+      });
+    });
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching character data', error });

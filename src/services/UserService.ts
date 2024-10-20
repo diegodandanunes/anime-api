@@ -1,6 +1,6 @@
-import axios, { AxiosError } from "axios";
-import dotenv from "dotenv";
-import { handleAxiosError } from "../utils/handleAxiosError";
+import axios from 'axios';
+import dotenv from 'dotenv';
+import { handleAxiosError } from '../utils/handleAxiosError';
 
 dotenv.config({ path: '.env.local' });
 
@@ -11,12 +11,14 @@ const auth0OauthEndpoint = `${AUTH0_DOMAIN}/oauth/token`;
 export const fetchUserLogin = async (
   email: string,
   password: string
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any> => {
   try {
     const payload = {
-      grant_type: "password",
+      grant_type: 'client_credentials',
       username: email,
       password: password,
+      audience: `${AUTH0_DOMAIN}/api/v2/`,
       client_id: AUTH0_CLIENT_ID,
       client_secret: AUTH0_CLIENT_SECRET,
     };
@@ -30,14 +32,14 @@ export const fetchUserLogin = async (
 
 export const getManagementToken = async () => {
   const options = {
-    method: "POST",
+    method: 'POST',
     url: auth0OauthEndpoint,
-    headers: { "content-type": "application/json" },
+    headers: { 'content-type': 'application/json' },
     data: {
       client_id: AUTH0_CLIENT_ID,
       client_secret: AUTH0_CLIENT_SECRET,
       audience: `${AUTH0_DOMAIN}/api/v2/`,
-      grant_type: "client_credentials",
+      grant_type: 'client_credentials',
     },
   };
 
@@ -45,7 +47,7 @@ export const getManagementToken = async () => {
     const response = await axios(options);
     return response.data.access_token;
   } catch (error) {
-    console.error("Error generating token", error);
+    console.error('Error generating token', error);
   }
 };
 
@@ -53,16 +55,16 @@ export const createUser = async (email: string, password: string) => {
   const token = await getManagementToken();
 
   const options = {
-    method: "POST",
+    method: 'POST',
     url: `${AUTH0_DOMAIN}/api/v2/users`,
     headers: {
-      "content-type": "application/json",
+      'content-type': 'application/json',
       authorization: `Bearer ${token}`,
     },
     data: {
       email: email,
       password: password,
-      connection: "Username-Password-Authentication",
+      connection: 'Username-Password-Authentication',
     },
   };
 

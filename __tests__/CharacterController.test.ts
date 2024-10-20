@@ -2,11 +2,11 @@ import { Request, Response } from 'express';
 import { getCharactersByAnime } from '../src/controllers/CharactersController';
 import { fetchCharactersByAnime } from '../src/services/CharacterService';
 
-// Mocks
 jest.mock('../src/services/CharacterService');
 
 describe('getCharactersByAnime', () => {
-  const mockAnimeId = '1'; // ID de exemplo
+  const mockAnimeId = '1';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockRequest = (params: any): Request => ({
     params: {
       id: mockAnimeId,

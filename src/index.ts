@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from 'express';import dotenv from 'dotenv';
+import express, { Request, Response, NextFunction } from 'express';
+import dotenv from 'dotenv';
 import { errorHandler } from './middlewares/errorHandler';
 import AnimeRouter from './routes/AnimeRouter';
 import CharacterRouter from './routes/CharacterRouter';
@@ -19,7 +20,7 @@ app.use(cors());
 
 app.use('/anime', AnimeRouter);
 app.use('/characters', CharacterRouter);
-app.use('/', UserRouter)
+app.use('/', UserRouter);
 
 app.use(errorHandler);
 

@@ -1,6 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import dotenv from 'dotenv';
-import { IAnime, IAnimeResponse } from '../types';
+import { IAnimeResponse } from '../types';
 
 dotenv.config();
 
@@ -11,6 +11,6 @@ export const fetchAnimeData = async (id: string): Promise<IAnimeResponse> => {
         const { data } = await axios.get(`${API_URL}/anime/${id}`);
         return data.data;
     } catch (error) {
-        throw new Error('Failed to fetch anime data');
+        throw new Error(`Failed to fetch anime data - ${error}`);
     }
 };

@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { fetchUserLogin, createUser } from "../services/UserService";
+import { Request, Response } from 'express';
+import { fetchUserLogin, createUser } from '../services/UserService';
 
 export const handleUserLogin = async (req: Request, res: Response) => {
   try {

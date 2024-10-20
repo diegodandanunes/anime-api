@@ -1,7 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { fetchCharactersByAnime } from '../src/services/CharacterService';
-import { ICharacter } from '../src/types';
 
 const mock = new MockAdapter(axios);
 

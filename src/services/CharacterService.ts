@@ -11,6 +11,6 @@ export const fetchCharactersByAnime = async (id: string): Promise<ICharacterResp
         const { data } = await axios.get(`${API_URL}/anime/${id}/characters`);
         return data.data;
     } catch (error) {
-        throw new Error('Failed to fetch anime data');
+        throw new Error(`Failed to fetch anime data - ${error}`);
     }
 };

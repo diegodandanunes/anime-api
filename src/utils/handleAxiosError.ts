@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError } from 'axios';
 
 export const handleAxiosError = (error: unknown): Error => {
     if (error instanceof AxiosError) {
@@ -8,5 +8,5 @@ export const handleAxiosError = (error: unknown): Error => {
       return new Error(`Request failed with status ${status}: ${message}`);
     }
   
-    return new Error("An unknown error occurred");
+    return new Error('An unknown error occurred');
   };
